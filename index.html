@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Supol ChatBot</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+      .chat-container {
+        height: 70vh;
+        overflow-y: scroll;
+      }
+      .message-container {
+        display: flex;
+        margin-bottom: 10px;
+        animation-duration: 0.5s;
+      }
+      .user-message {
+        background-color: #007bff;
+        color: white;
+        border-radius: 10px;
+        padding: 10px;
+        max-width: 50%;
+        animation-name: slideInFromLeft;
+      }
+      .ai-message {
+        background-color: #eee;
+        color: black;
+        border-radius: 10px;
+        padding: 10px;
+        max-width: 50%;
+        animation-name: slideInFromRight;
+      }
+      @keyframes slideInFromLeft {
+        0% {
+          transform: translateX(-100%);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+      @keyframes slideInFromRight {
+        0% {
+          transform: translateX(100%);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+      .send-btn {
+        color: #fff;
+        background-color: #007bff;
+        border-color: #007bff;
+      }
+      .send-btn:hover {
+        color: #fff;
+        background-color: #0069d9;
+        border-color: #0062cc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row mt-5">
+        <div class="col-md-8 offset-md-2">
+          <h1 class="text-center">Supol ChatBot</h1>
+          <div class="card">
+            <div class="card-body chat-container">
+              {% for message in chat_history %}
+              <div class="message-container {% if message[0] == 'user' %}user-message{% else %}ai-message{% endif %}">
+                <p>{{ message[1] }}</p>
+              </div>
+              {% endfor %}
+            </div>
+            <div class="card-footer">
+              <form id="chat-form" method="POST">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Type your message here" name="message" autocomplete="off">
+                  <div class="input-group-append">
+                    <button class="btn send-btn" type="submit" id="send-btn"><i class="fas fa-paper-plane"></i></button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        // Automatically scroll to the bottom of the chat window
+        $('.chat-container
+      });
+</script>
+</body>
+</html>
